@@ -12,10 +12,10 @@ source ('02_functions_plot_level.R')
 source ('03_functions_survival_analyses.R')
 
  # data for plot-level analyses 
-plot_rates <- read.csv ('01_plot_rates.csv') # mortality rates per census
-census_rates <- read.csv ('02_census_rates.csv') # mortality rates per census
-mod <- read.csv ('03_census_mod.csv')
-S <- read.csv ('04_surv_matrix.csv')
+plot_rates <- read.csv ('d01_plot_rates.csv') # mortality rates per census
+census_rates <- read.csv ('d02_census_rates.csv') # mortality rates per census
+mod <- read.csv ('d03_census_mod.csv')
+S <- read.csv ('d04_surv_matrix.csv')
 
 
 # 1. Spatial distribution of tree death -------
