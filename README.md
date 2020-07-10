@@ -13,17 +13,17 @@ Functions used to perform plot-level analyses and plot Figures 1 and 2
 Functions used to perform survival analyses and plot Figure 3
 
 ## Data required
-### 01_plot_rates.csv
+### d01_plot_rates.csv
 Mortality rates per plot, plot location (latitude and longitude), region and plot code.
 
-### 02_census_rates.csv
+### d02_census_rates.csv
 Mortality rates per census, census number, region and plot code.
 
-### 03_census_mod.csv
+### d03_census_mod.csv
 Mortality rates per census for each mode of death, proportion of dead trees within each mode of death, census interval lenght,region and plot code. 
 Modes of death: standing (likstanding) and broken/uprooted (notstanding)
 
-### 04_surv_matrix.csv
+### d04_surv_matrix.csv
 Treeid, plot code, region, dead (0/1)
 
 interval (i.e. interval during which tree was monitored)
