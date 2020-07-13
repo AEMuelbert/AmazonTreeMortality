@@ -61,4 +61,4 @@ MeangrD (mm, mean growth rate for the species)
 
 WD (g cm-3, species-level wood density)
 
-WDA.gen (mm, species-level water-defici affiliation)
+WDA (mm, species-level water-defici affiliation)
