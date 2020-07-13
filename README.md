@@ -38,9 +38,7 @@ p.MoD.likstanding - proportion of dead trees that died standing
 
 p.MoD.notstanding - proportion of dead trees that died broken/uprooted 
 
-plot location (latitude and longitude in decimal degrees)
-
-census interval lenght
+census interval lenght (y)
 
 region
 
