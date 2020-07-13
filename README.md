@@ -18,6 +18,9 @@ Functions used to perform plot-level analyses and plot Figures 1 and 2
 Functions used to perform survival analyses and plot Figure 3
 
 ## Data required
+
+Data are available at: http://www.forestplots.net/en/publications#data
+
 ### d01_plot_rates.csv
 Plot code 
 
