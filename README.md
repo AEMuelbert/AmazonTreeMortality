@@ -1,5 +1,10 @@
 # AmazonTreeMortality
-Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. 2020
+Adriane Esquivel Muelbert - School of Geography, Earth and Environmental Sciences, University of Birmingham, UK.
+adriane.esquivel@gmail.com
+
+Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. (2020) How and Why Amazon trees die. 
+
+Code developed and tested using the R statistical platform R v 3.5.2 (R Development Core Team, 2015).
 
 ## 01_Master.R 
 Describes the analyses shown in the paper including plot-level analyses and the survival analyses (tree-level)
@@ -14,28 +19,44 @@ Functions used to perform survival analyses and plot Figure 3
 
 ## Data required
 ### d01_plot_rates.csv
-Mortality rates per plot, plot location (latitude and longitude), region and plot code.
+Plot code 
 
-### d02_census_rates.csv
-Mortality rates per census, census number, region and plot code.
+Stem mortality rates (% y-1)
+
+plot location (latitude and longitude in decimal degrees)
+
+region
 
 ### d03_census_mod.csv
-Mortality rates per census for each mode of death, proportion of dead trees within each mode of death, census interval lenght,region and plot code. 
-Modes of death: standing (likstanding) and broken/uprooted (notstanding)
+Plot code 
+
+m.rates.likstanding - Stem mortality rates (% y-1) for trees that died standing 
+
+m.rates.notstanding - Stem mortality rates (% y-1) for trees that died broken/uprooted 
+
+p.MoD.likstanding - proportion of dead trees that died standing
+
+p.MoD.notstanding - proportion of dead trees that died broken/uprooted 
+
+plot location (latitude and longitude in decimal degrees)
+
+census interval lenght
+
+region
 
 ### d04_surv_matrix.csv
 Treeid, plot code, region, dead (0/1)
 
 interval (i.e. interval during which tree was monitored)
 
-D40 (diameter before the last observation)
+D (mm, diameter before the last observation)
 
-DrelGR0(relative growth prior last observation)
+DrelGR(mm, relative growth prior last observation)
 
-MaxD(maximum diameter for the species)
+MaxD(mm, maximum diameter for the species)
 
-MeangrD (mean growth rate for the species)
+MeangrD (mm, mean growth rate for the species)
 
-WD (species-level wood density)
+WD (g cm-3, species-level wood density)
 
-WDA.gen (species-level water-defici affiliation)
+WDA.gen (mm, species-level water-defici affiliation)
