@@ -43,9 +43,13 @@ census interval lenght (y)
 region
 
 ### d04_surv_matrix.csv
-Treeid, plot code, region, dead (0/1)
+plot code
 
-interval (i.e. interval during which tree was monitored)
+region
+
+dead (0/1)
+
+interval (i.e. interval during which tree was monitored in years)
 
 D (mm, diameter before the last observation)
 
