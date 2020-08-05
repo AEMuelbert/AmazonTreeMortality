@@ -30,7 +30,7 @@ plot location (latitude and longitude in decimal degrees)
 
 region
 
-### d03_census_mod.csv
+### d02_census_mod.csv
 Plot code 
 
 m.rates.likstanding - Stem mortality rates (% y-1) for trees that died standing 
@@ -45,7 +45,7 @@ census interval lenght (y)
 
 region
 
-### d04_surv_matrix.csv
+### d03_surv_matrix.csv
 plot code
 
 region
