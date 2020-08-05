@@ -6,74 +6,74 @@ CompareSurvivalModels <- function (S, event = 'dead') {
   
   # FULL MODEL
   
-  mFULL.Plot <- coxph (S_ind ~ poly (D40, 2)+
-                         DrelGR0 + 
+  mFULL.Plot <- coxph (S_ind ~ poly (D, 2)+
+                         DrelGR + 
                          MaxD + 
                          MeangrD +
                          WD + 
-                         WDA.gen+
+                         WDA+
                          frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   
-  mFULLnoIndSize <- coxph (S_ind ~ #poly (D40, 2)+
-                             DrelGR0 + 
+  mFULLnoIndSize <- coxph (S_ind ~ #poly (D, 2)+
+                             DrelGR + 
                              MaxD + 
                              MeangrD +
                              WD + 
-                             WDA.gen+
+                             WDA+
                              frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
-  mFULLDLin <- coxph (S_ind ~ D40+
-                        DrelGR0 + 
+  mFULLDLin <- coxph (S_ind ~ D+
+                        DrelGR + 
                         MaxD + 
                         MeangrD +
                         WD + 
-                        WDA.gen+
+                        WDA+
                         frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
-  mFULLnoIndGrowth <- coxph (S_ind ~ poly (D40, 2)+
-                               #DrelGR0 + 
+  mFULLnoIndGrowth <- coxph (S_ind ~ poly (D, 2)+
+                               #DrelGR + 
                                MaxD + 
                                MeangrD +
                                WD + 
-                               WDA.gen+
+                               WDA+
                                frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
-  mFULLnoWD <- coxph (S_ind ~ poly (D40, 2)+
-                        DrelGR0 + 
+  mFULLnoWD <- coxph (S_ind ~ poly (D, 2)+
+                        DrelGR + 
                         MaxD + 
                         MeangrD +
                         #WD + 
-                        WDA.gen+
+                        WDA+
                         frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   
-  mFULLnoWDA <- coxph (S_ind ~ poly (D40, 2)+
-                         DrelGR0 + 
+  mFULLnoWDA <- coxph (S_ind ~ poly (D, 2)+
+                         DrelGR + 
                          MaxD + 
                          MeangrD +
                          WD + 
-                         #WDA.gen+
+                         #WDA+
                          frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   
   
   
-  mFULLnoMeangr <- coxph (S_ind ~ poly (D40, 2)+
-                            DrelGR0 + 
+  mFULLnoMeangr <- coxph (S_ind ~ poly (D, 2)+
+                            DrelGR + 
                             MaxD + 
                             #MeangrD +
                             WD + 
-                            WDA.gen+
+                            WDA+
                             frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   
-  mFULLnoMaxD <- coxph (S_ind ~ poly (D40, 2)+
-                          DrelGR0 + 
+  mFULLnoMaxD <- coxph (S_ind ~ poly (D, 2)+
+                          DrelGR + 
                           #MaxD + 
                           MeangrD +
                           WD + 
-                          WDA.gen+
+                          WDA+
                           frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   
@@ -84,14 +84,14 @@ CompareSurvivalModels <- function (S, event = 'dead') {
                     MaxD + 
                     MeangrD +
                     WD + 
-                    WDA.gen+
+                    WDA+
                     frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
-  m_Ind <- coxph (S_ind ~ poly (D40, 2)+
-                    DrelGR0 + 
+  m_Ind <- coxph (S_ind ~ poly (D, 2)+
+                    DrelGR + 
                     frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
-  m_relGR <- coxph (S_ind ~ DrelGR0 + 
+  m_relGR <- coxph (S_ind ~ DrelGR + 
                       frailty(Plot.Code, method = 'aic', sparse=10),data=S)
   
   mMeangr <- coxph (S_ind ~ MeangrD + 
@@ -138,7 +138,7 @@ PlotCompareCI <- function (ci) {
     u <- unique (a$xlim.up)
     vline <- 1
     
-    if (allvar[i] %in% c('poly(D40, 2)2','poly(D40, 2)1')) {
+    if (allvar[i] %in% c('poly(D, 2)2','poly(D, 2)1')) {
       l <- log (l)
       u <- log (u)
       a$exp.coef <- log (a$exp.coef)
@@ -160,17 +160,17 @@ PlotCompareCI <- function (ci) {
 }
 
 PlotSurvReg <- function (models, data) {
-  mod.par <- list (list (variable = 'D40', par.vari = seq(102,663,by=1), legend = 'Diameter mm', ylab = "Relative hazard"),
-                   list (variable = 'DrelGR0', par.vari = seq(-0.92,6.02,by=0.1), legend = expression ('Relative growth % y'^'-1'), ylab = ""),
+  mod.par <- list (list (variable = 'D', par.vari = seq(102,663,by=1), legend = 'Diameter mm', ylab = "Relative hazard"),
+                   list (variable = 'DrelGR', par.vari = seq(-0.92,6.02,by=0.1), legend = expression ('Relative growth % y'^'-1'), ylab = ""),
                    list (variable = 'MaxD', par.vari = seq(195,741,by=1), legend = 'Max D mm', ylab = "Relative hazard"),
                    list (variable = 'MeangrD', par.vari = seq(0,5,by=0.1), legend = expression ('Mean growth rate mm y' ^'-1'), ylab = ''),
                    list (variable = 'WD', par.vari = seq(0.26,0.93,by=0.01), legend = expression ('Wood density g cm'^'-3'), ylab = "Relative hazard"),
-                   list (variable = 'WDA.gen', par.vari =seq(-571,-2,by=1), legend = expression ('WDA mm y'^'-1'), ylab = ""))
+                   list (variable = 'WDA', par.vari =seq(-571,-2,by=1), legend = expression ('WDA mm y'^'-1'), ylab = ""))
   
-  covari <- c ('D40',
-               'DrelGR0',
+  covari <- c ('D',
+               'DrelGR',
                'MaxD','MeangrD',
-               'WD', 'WDA.gen')
+               'WD', 'WDA')
   
   col.line <- list (rgb(0,102/255,0,0.7),
                     rgb(240/255,0,0,0.7),

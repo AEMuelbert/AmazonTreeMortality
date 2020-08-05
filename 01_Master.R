@@ -3,19 +3,19 @@
 # Developed by Adriane Esquivel Muelbert
 #*******
 
-#packages 
+# load packages 
 library (maps); library (mapdata); library (mapplots); library (plotrix)
-library (plyr); library (multicomp)
+library (plyr); library (multcomp)
 library (survival); library(lme4); library (MASS); library (rms)
 
+# load functions required
 source ('02_functions_plot_level.R')
 source ('03_functions_survival_analyses.R')
 
- # data for plot-level analyses 
-plot_rates <- read.csv ('d01_plot_rates.csv') # mortality rates per census
-census_rates <- read.csv ('d02_census_rates.csv') # mortality rates per census
-mod <- read.csv ('d03_census_mod.csv')
-S <- read.csv ('d04_surv_matrix.csv')
+ # load data
+plot_rates <- read.csv ('d01_plot_rates.csv') # mortality rates per plot
+mod <- read.csv ('d02_census_mod.csv')
+S <- read.csv ('d03_surv_matrix.csv')
 
 
 # 1. Spatial distribution of tree death -------
@@ -24,9 +24,7 @@ S <- read.csv ('d04_surv_matrix.csv')
 MapMortalityRates (plot_rates)
 
 # b. Calculating the proportion of mode of death -------
-# here using census interval as a response variable to account for its effect on the proportion of standing and broken/uprooted trees
-
-# WHOLE BASIN
+# Whole Basin
 # model for non-standing (i.e. broken/uprooted) death
 mNS <- lm (p.MoD.notstanding ~   census.interval.m0 , data = mod, na.action = na.omit)
 summary (mNS) 
@@ -36,7 +34,7 @@ mS <- lm (p.MoD.lik.standing ~   census.interval.m0 , data = mod, na.action = na
 summary (mS)
 confint(mS)
 
-# PER REGION
+# Per region
 # calculate proportion of non-standing trees per region
 mNSr <- lm (p.MoD.notstanding ~ 0 + census.interval.m0 + region , data = mod, na.action = na.omit)
 summary (mNSr)
@@ -47,7 +45,7 @@ mSr <- lm (p.MoD.lik.standing ~  0 + census.interval.m0 + region , data = mod, n
 summary (mSr)
 confint(mSr)
 
-# Applying posthoc test to test for the difference across regions
+# Applying posthoc test - difference across regions
 # Refit model with intercept to allow for the post-hoc test
 mod$region<- as.factor (mod$region)
 
@@ -58,9 +56,7 @@ cld(glht(mNSr2,linfct=mcp(region="Tukey")))
 cld(glht(mSr2,linfct=mcp(region="Tukey")))
 
 # c. Plotting figure 2 - proportion and mode of death for different regions ----
-CompareRegions (mod,plot_rates, census_rates) # This figures also use the proportions 
-
-
+CompareRegions (mod,plot_rates) # This figures also use the proportions 
 
 #******************************
 # 2. Survival analyses -------
@@ -68,12 +64,12 @@ CompareRegions (mod,plot_rates, census_rates) # This figures also use the propor
 
 S_ind <- Surv (time =S$interval, event = S$dead)
 
-mFULL.Plot <- coxph (S_ind ~ poly (D40, 2)+
-                       DrelGR0 + 
+mFULL.Plot <- coxph (S_ind ~ poly (D, 2)+
+                       DrelGR + 
                        MaxD + 
                        MeangrD +
                        WD + 
-                       WDA.gen+
+                       WDA+
                        frailty(Plot.Code, method = 'aic', sparse=10),data=S)
 
 stepAIC (mFULL.Plot, direction = 'both')
@@ -95,36 +91,36 @@ SurvEC <- Surv (time = SEC$interval, event = SEC$dead)
 SurvGS <- Surv (time = SGS$interval, event = SGS$dead)
 
 # models for the different regions
-mWA <- coxph (SurvWA ~ poly (D40, 2)+
-                DrelGR0 + 
+mWA <- coxph (SurvWA ~ poly (D, 2)+
+                DrelGR + 
                 MaxD +
                 MeangrD +
                 WD + 
-                WDA.gen+
+                WDA+
                 frailty(Plot.Code),data=SWA)
 
-mBS <- coxph (SurvBS ~ poly (D40, 2)+
-                DrelGR0 + 
+mBS <- coxph (SurvBS ~ poly (D, 2)+
+                DrelGR + 
                 MaxD +
                 MeangrD +
                 WD + 
-                WDA.gen+
+                WDA+
                 frailty(Plot.Code),data=SBS)
 
-mEC <- coxph (SurvEC ~ poly (D40, 2)+
-                DrelGR0 + 
+mEC <- coxph (SurvEC ~ poly (D, 2)+
+                DrelGR + 
                 MaxD +
                 MeangrD +
                 WD + 
-                WDA.gen+
+                WDA+
                 frailty(Plot.Code),data=SEC)
 
-mGS <- coxph (SurvGS ~ poly (D40, 2)+
-                DrelGR0 + 
+mGS <- coxph (SurvGS ~ poly (D, 2)+
+                DrelGR + 
                 MaxD +
                 MeangrD +
                 WD + 
-                WDA.gen+
+                WDA+
                 frailty(Plot.Code),data=SGS)
 
 # comparing regions

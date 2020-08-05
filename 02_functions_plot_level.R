@@ -45,7 +45,7 @@ MapMortalityRates <- function (plot_rates) {
                             max (plot_rates$m.rates.annual)),1), 
          horiz = T, pt.lwd = 2, bty = 'o', box.col = 'white')
   
-  points (cluster.overplot(plot_rates[,'Longitude.Decimal'], plot_rates[,'Latitude.Decimal'],away = c(1.5,1.3)),  
+  points (cluster.overplot(plot_rates[,'Longitude.Decimal'], plot_rates[,'Latitude.Decimal'],away = c(0.9,0.9)),  
           cex = plot_rates$m.rates.annual, lwd = 2, col = as.character (plot_rates$mycol))
   stan <- c(51,61,44,55) # proportion of trees that die standing 
   stru <- 100 - stan # proportion of trees that die broken/uprooted 
@@ -68,7 +68,7 @@ MapMortalityRates <- function (plot_rates) {
 }
 
 
-CompareRegions <- function (mod, plot_rates, census_rates) {
+CompareRegions <- function (mod, plot_rates) {
   mechanic = as.character (c(rgb(0,102/255,0,0.4),rgb(240/255,0,0,0.4),
                              rgb(225/255,128/255,0,0.4),rgb(0,76/255,153/255,0.4)))
   standing = as.character (c(rgb(0,102/255,0,1),rgb(240/255,0,0,1),
@@ -85,7 +85,7 @@ CompareRegions <- function (mod, plot_rates, census_rates) {
   text (0.7,5.8, 'a', border = NULL,  font = 2, cex = 1.5)
   
   
-  a <- aov ((census_rates$m.rates.annual)~census_rates$region)
+  a <- aov ((plot_rates$m.rates.annual)~plot_rates$region)
   TukeyHSD (a)
   pos <- bp$stats[5,]+0.15
   text (c(1,2,3,4), pos, c('a','a','b','c'), border = NULL,  font = 2, cex = 1.2)
