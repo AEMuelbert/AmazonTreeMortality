@@ -2,7 +2,7 @@
 Adriane Esquivel Muelbert - School of Geography, Earth and Environmental Sciences, University of Birmingham, UK.
 adriane.esquivel@gmail.com
 
-Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. How and Why Amazon trees die. 
+Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. in press
 
 Code developed and tested using the R statistical platform R v 3.5.2 (R Development Core Team, 2015).
 
