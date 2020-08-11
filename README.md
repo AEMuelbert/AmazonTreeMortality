@@ -1,4 +1,8 @@
 # AmazonTreeMortality
+
+[![DOI](https://zenodo.org/badge/265245512.svg)](https://zenodo.org/badge/latestdoi/265245512)
+
+
 Adriane Esquivel Muelbert - School of Geography, Earth and Environmental Sciences, University of Birmingham, UK.
 adriane.esquivel@gmail.com
 
