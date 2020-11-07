@@ -5,9 +5,9 @@
 
 
 Adriane Esquivel Muelbert - School of Geography, Earth and Environmental Sciences, University of Birmingham, UK.
-adriane.esquivel@gmail.com
+a.esquivelmuelbert@bham.ac.uk
 
-Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. in press
+Codes from the analyses on spatial patterns of tree mortality across Amazonian forests published in the article Esquivel-Muelbert et al. (2020) Tree mode of death and mortality risk factors across Amazon forests. Nature Communications 10.1038/s41467-020-18996-3
 
 Code developed and tested using the R statistical platform R v 3.5.2 (R Development Core Team, 2015).
 
